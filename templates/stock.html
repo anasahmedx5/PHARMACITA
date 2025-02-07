@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>stock</title>
+        <meta charset ="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+        <link href="/static/styles.css" rel="stylesheet">
+    </head>
+    <body class="add-main1">
+        <form action="/stock" method="POST">
+        <header class = "headerr">
+            <div class="navbar">
+                <div class="welcome">Welcome {{ emp_name }}!</div>
+                <div class="homepage-container">
+                    <a href="homepage" class="homepage-btn">Homepage</a>
+                </div>
+                <ul class="links">
+                    <li><a href="add">Add</a></li>
+                    <li><a href="remove">Remove</a></li>
+                    <li><a href="stock">Stock</a></li>
+                </ul>
+            </div>
+        </header>
+        <div class="stock-container">
+            <table id="t1" class="table">
+                <thead>
+                    <tr>
+                        <th class="qstart">Name</th>
+                        <th class="text-start">Quantity</th>
+                        <th class="qend">Availability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in rows %}
+                    <tr>
+                        <td class="text-start">{{ row["name"] }}</td>
+                        <td class="text-start">{{ row["quantity"] }}</td>
+                        <td class="text-start">
+                            {% if row["quantity"] <= 5 %}
+                                <span class="low">LOW</span>
+                            {% elif row["quantity"] < 10 %}
+                                <span class="medium">MEDIUM</span>
+                            {% else %}
+                                <span class="high">HIGH</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </form>
+    </body>
+</html>

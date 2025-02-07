@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>remove</title>
+        <meta charset ="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+        <link href="/static/styles.css" rel="stylesheet">
+    </head>
+    <body class="add-page">
+        <form action="/remove" method="post">
+        <header class = "headerr">
+            <div class="navbar">
+                <div class="welcome">Welcome {{ emp_name }}!</div>
+                <div class="homepage-container">
+                    <a href="homepage" class="homepage-btn">Homepage</a>
+                </div>  
+                <ul class="links">
+                    <li><a href="add">Add</a></li>
+                    <li><a href="remove">Remove</a></li>
+                    <li><a href="stock">Stock</a></li>
+                </ul>
+            </div>
+        </header>
+        <main class="add-main">
+            <div class="add-container">
+                <h2 class="lgh2">Remove Medicine</h2>
+                <div class="search-add">
+                    <input class="inp" type="search" name="medicine_n" placeholder="Medicine" required autocomplete="off">
+                    <button class="bt" type="submit">Remove</button>
+                </div>
+            </div>
+        </main>
+    </form>
+    </body>
+</html>
