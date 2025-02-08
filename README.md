@@ -40,3 +40,29 @@ The system uses a **SQLite** database with the following tables:
 - **SQLite**: For the database.
 - **HTML/CSS**: For front-end development.
 - **Python**: For back-end logic and database interactions.
+
+## **Installation Guide**
+
+### **Prerequisites**
+Before installing, make sure you have the following installed on your system:
+- **Python** (version 3.7 or higher)
+- **pip** (Python package manager)
+- **Git** (to clone the repository)
+
+### **Steps to Install and Run the Project**
+
+#### **1. Clone the Repository**
+```sh
+git clone https://github.com/anasahmedx5/PHARMACITA.git
+cd PHARMACITA
+```
+
+#### **2. Run the Application**
+```sh
+python -m flask --app .\app.py run
+```
+
+#### **3. Access the Admin Panel**
+Default Admin Credentials:
+ - Username: `anas`
+ - Password: `1`
