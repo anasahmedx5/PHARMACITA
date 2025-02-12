@@ -66,3 +66,11 @@ python -m flask --app .\app.py run
 Default Admin Credentials:
  - Username: `anas`
  - Password: `1`
+
+## Future Enhancements
+1. **Tracking Medicines Expiry Dates:**
+   - Feature Description: Medicines will now have an expiry date, and the system will allow employees to set and track these expiry dates.
+   - Purpose: This will help the pharmacy stay on top of expiring stock and prevent selling expired medicines.
+
+2. **Messaging System Between Employees:**
+   - Feature Description: A messaging system will be implemented to allow employees to send and receive messages. This will help with internal communication within the pharmacy, particularly in areas like stock management and sales tracking.
