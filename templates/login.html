@@ -12,6 +12,9 @@
             <div class="form-box" id="login-form">
                 <form action="/" method="POST">
                     <h2 class="lgh2">Login</h2>
+                    {% if error %}
+                    <div class="error-box">{{ error }}</div>
+                    {% endif %}
                     <input class="inp" type="username" name="username" placeholder="Username" required autocomplete="off">
                     <input class="inp" type="password" name="password" placeholder="Password" required autocomplete="off">
                     <button class="bt" type="submit" name="login">Login</button>

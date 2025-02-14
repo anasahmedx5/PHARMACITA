@@ -25,6 +25,9 @@
         <main class="add-main">
             <div class="add-container">
                 <h2 class="lgh2">Add Medicine</h2>
+                {% if error %}
+                <div class="error-box">{{ error }}</div>
+                {% endif %}
                 <div class="search-add">
                         <input class="inp" type="search" name="medicine_n" placeholder="Medicine" required>
                         <input class="inp" type="number" name="price" placeholder="Price" required>

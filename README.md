@@ -7,6 +7,7 @@ This project is a web-based application built with **Flask**, **SQLite**, and **
 1. **User Authentication**: 
    - Employees can log in with a username and password.
    - A secure session management system ensures only authenticated users can access the internal pages.
+   - **Password Hashing:** The application now uses **Argon2**, a secure password hashing algorithm, to store and verify passwords securely.
 
 2. **Dashboard (Homepage)**: 
    - Displays essential statistics such as:
@@ -18,6 +19,7 @@ This project is a web-based application built with **Flask**, **SQLite**, and **
 3. **Medicine Management**: 
    - **Add Medicine**: Employees can add new medicines to the inventory, including specifying their price and name.
    - **Remove Medicine**: Employees can remove medicines from the inventory. Upon removal, the quantity and revenue for the sold medicine are updated.
+   - **Error Message Display**: If a user enters invalid or incomplete inputs when adding or removing a medicine, an error message is displayed above the input field instead of redirecting them to a new page.
 
 4. **Stock Overview**: 
    - The **Stock** page provides an overview of the current inventory, showing each medicine's name and its available quantity.
@@ -40,6 +42,7 @@ The system uses a **SQLite** database with the following tables:
 - **SQLite**: For the database.
 - **HTML/CSS**: For front-end development.
 - **Python**: For back-end logic and database interactions.
+- **Argon2**: For secure password hashing.
 
 ## **Installation Guide**
 

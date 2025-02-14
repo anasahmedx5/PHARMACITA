@@ -1,5 +1,6 @@
 import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, session
+from helper import generate_hash, verify_password
 from functools import wraps
 
 app = Flask(__name__)
@@ -23,33 +24,33 @@ def get_db_connection():
 @app.route("/", methods=["GET", "POST"])
 def index():
     session.clear()
+    error = None
     
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
     
         if not username or not password:
-            return "Please enter a username or password", 400
+            error = "Please enter a username or password"
         
         conn = get_db_connection()
         cursor = conn.cursor()
         
-        cursor.execute("SELECT * FROM employee WHERE username = ? AND password = ?", (username, password))
+        cursor.execute("SELECT * FROM employee WHERE username = ?", (username,))
         user = cursor.fetchone()
         conn.close()
         
-        if user:
+        if user and verify_password(user["password"], password):
             session["emp_id"] = user["emp_id"]
             session["name"] = user["name"]
             session["username"] = user["username"]
-            session["password"] = user["password"]
             session["pharm_id"] = user["pharm_id"] 
             return redirect(url_for("homepage"))
         
         else:
-            return "Invalid username or password", 401    
+            error = "Invalid username or password" 
     
-    return render_template("login.html")
+    return render_template("login.html",error=error)
     
 
 @app.route("/homepage", methods=["GET", "POST"])
@@ -106,36 +107,38 @@ def homepage():
 @app.route("/add", methods=["GET", "POST"])
 @login_required
 def add():
+    error = None
     
     if request.method == "POST":
         medicine_n = request.form.get("medicine_n")
         price = request.form.get("price")
         
         if not medicine_n or not price:
-            return "Please enter valid inputs", 401
+            error = "Please enter valid inputs"
         
         conn = get_db_connection()
         cursor = conn.cursor()
         
         cursor.execute("INSERT INTO medicine (name, price) VALUES (?, ?)", (medicine_n, price)) 
-        
-            # cursor.execute("UPDATE medicine SET quantity = quantity + ? WHERE name = ?", (quantity, medicine_n))
 
         conn.commit()
         conn.close()
                   
-    return render_template("add.html", emp_name=session["name"])
+    return render_template("add.html", emp_name=session["name"], error=error)
 
 
 
 @app.route("/remove", methods=["GET", "POST"])
 @login_required
 def remove():
+    error = None
+    
     if request.method == "POST":
         medicine_n = request.form.get("medicine_n")
         
         if not medicine_n:
-            return "Please enter valid inputs", 401
+            error = "Please enter valid inputs"
+            return render_template("remove.html", emp_name=session["name"], error=error)
         
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -144,7 +147,7 @@ def remove():
         row = cursor.fetchone()
         
         if row is None:
-            return "Medicine not found", 401
+            error = "Medicine not found"
         else:
             rowid = row[0]
             price = row["price"]
@@ -156,7 +159,7 @@ def remove():
         conn.commit()
         conn.close()
     
-    return render_template("remove.html", emp_name=session["name"])
+    return render_template("remove.html", emp_name=session["name"],error=error)
 
 
 

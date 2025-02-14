@@ -24,6 +24,6 @@
 --     total INTEGER
 -- );
 
-
+select * from employee;
 
 
