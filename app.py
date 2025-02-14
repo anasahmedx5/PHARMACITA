@@ -99,7 +99,7 @@ def homepage():
     conn.commit()
     conn.close()
     
-    return render_template("homepage.html", emp_name=session.get("name"), employees=employees, 
+    return render_template("index.html", emp_name=session.get("name"), employees=employees, 
                            low_stock=low_stock, stock=stock, total=total, amount=amount)
 
 

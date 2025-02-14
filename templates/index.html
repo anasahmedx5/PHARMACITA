@@ -1,0 +1,64 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+        <head>
+            <title>homepage</title>
+            <meta charset ="UTF-8">
+            <meta name="viewport" content="width=device-width, intial-scale=1.0">
+            <link href="/static/styles.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        </head>
+
+        <body class="home-page">
+            <form action="/homepage" method="POST">
+            <header class = "headerr">
+                <div class="navbar">
+                    <div class="welcome">Welcome {{ emp_name }}!</div>
+                    <div class="homepage-container">
+                        <a href="homepage" class="homepage-btn">Homepage</a>
+                    </div>                
+                    <ul class="links">
+                        <li><a href="add">Add</a></li>
+                        <li><a href="remove">Remove</a></li>
+                        <li><a href="stock">Stock</a></li>
+                    </ul>
+                </div>
+            </header>
+            <main class="homepage-main">
+                <div class="box">
+                    <i class="fas fa-pills"></i>
+                    <p class="homepage-p">Medicines Sold</p>
+                    <p class="homepage-p1">{{ amount }}</p>
+                </div>
+                <div class="box">
+                    <i class="fas fa-capsules"></i>
+                    <p class="homepage-p">Total Stock</p>
+                    <p class="homepage-p1">{{ stock }}</p>
+                </div>
+                <div class="box" href="stock">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p class="homepage-p">Low Stock</p>
+                    <p class="homepage-p1">{{ low_stock }}</p>
+                </div>
+                <div class="box">
+                    <i class="fas fa-user-md"></i>
+                    <p class="homepage-p">Employees</p>
+                    <p class="homepage-p1">{{ employees }}</p>
+                </div>
+                <div class="box">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <p class="homepage-p">Revenue</p>
+                    <p class="homepage-p1">${{ total }}</p>
+                </div>
+            </main>            
+        </form>
+        <footer>
+            <div>
+                <a href="msgs" class="msg-btn">
+                    <i class="fas fa-comments"></i> Messages
+                </a>
+            </div>
+        </footer>
+        <script src="/static/script.js"></script> 
+        </body>
+    </html>
