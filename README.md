@@ -56,8 +56,8 @@ Before installing, make sure you have the following installed on your system:
 
 #### **1. Clone the Repository**
 ```sh
-git clone https://github.com/anasahmedx5/PHARMACITA.git
-cd PHARMACITA
+git clone https://github.com/anasahmedx5/pharmacita.git
+cd pharmacita
 ```
 
 #### **2. Run the Application**
